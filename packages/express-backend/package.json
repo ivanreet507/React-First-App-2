@@ -1,0 +1,26 @@
+{
+  "name": "express-backend",
+  "version": "1.0.0",
+  "description": "express backend",
+  "main": "backend.js",
+  "type": "module",
+  "scripts": {
+    "test": "none"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ivanreet507/React-First-App-2.git"
+  },
+  "keywords": [
+    "none"
+  ],
+  "author": "ivanreet kaur",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/ivanreet507/React-First-App-2/issues"
+  },
+  "homepage": "https://github.com/ivanreet507/React-First-App-2#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
