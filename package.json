@@ -5,14 +5,18 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cd react-frontend && npm start"
+    "dev": "npx nodemon backend.js",
+    "start": "node backend.js"
   },
   "author": "",
-  "license": "ISC",
+  "license": "UNLICENSED",
   "dependencies": {
     "create-react-app": "^5.0.1"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "nodemon": "^3.0.1"
   }
-  ,"workspaces": [
-	  "packages/*"
-  ]
 }
