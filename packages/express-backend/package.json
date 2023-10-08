@@ -5,7 +5,9 @@
   "main": "backend.js",
   "type": "module",
   "scripts": {
-    "test": "none"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx nodemon backend.js",
+    "start": "node backend.js"
   },
   "repository": {
     "type": "git",
@@ -22,5 +24,8 @@
   "homepage": "https://github.com/ivanreet507/React-First-App-2#readme",
   "dependencies": {
     "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
   }
 }
