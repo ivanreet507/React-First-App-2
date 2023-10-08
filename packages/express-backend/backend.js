@@ -32,7 +32,7 @@ const users = {
     ]
  }
 
-
+ 
 app.use(express.json());
 
 app.get('/', (req, res) => {
@@ -60,10 +60,19 @@ const findUserById = (id) =>
     users['users_list']
         .find( (user) => user['id'] === id);
 
+const findUserByJob_Name = (job, name) => { 
+    return users['users_list'].filter( (user) => user['name'] === name && user['job'] === job); 
+}
+
 const addUser = (user) => {
    users['users_list'].push(user);
    return user;
 }
+
+const deleteUser = (user_id) => {
+   users['users_list'] = users['users_list'].filter((user) => user.id !== user_id);
+   return users['users_list'];
+ }
     
 app.get('/users/:id', (req, res) => {
     const id = req.params['id']; //or req.params.id
@@ -75,9 +84,28 @@ app.get('/users/:id', (req, res) => {
     }
 });
 
+app.get('/users', (req, res) => {
+   const name = req.query.name;
+   const job = req.query.job;
+   if (job != undefined && name != undefined){
+       let result = findUserByJob_Name(job, name);
+       result = {users_list: result};
+       res.send(result);
+   }
+   else{
+       res.send(users);
+   }
+});
+
 app.post('/users', (req, res) => {
    const userToAdd = req.body;
    addUser(userToAdd);
+   res.send();
+});
+
+app.delete('/users/:id', (req, res) => {
+   const id = req.params['id'];
+   deleteUser(id);
    res.send();
 });
 
