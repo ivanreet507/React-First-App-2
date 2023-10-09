@@ -94,8 +94,9 @@ app.get('/users', (req, res) => {
 
 app.post('/users', (req, res) => {
    const userToAdd = req.body;
+   userToAdd.id = Math.random().toString();
    addUser(userToAdd);
-   res.send();
+   res.status(201).send(userToAdd);
 });
 
 app.delete('/users/:id', (req, res) => {
@@ -106,4 +107,4 @@ app.delete('/users/:id', (req, res) => {
 
 app.listen(port, () => {
    console.log(`Example app listening at http://localhost:${port}`);
-});  
+}); 

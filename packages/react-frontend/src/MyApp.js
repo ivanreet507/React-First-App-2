@@ -3,13 +3,13 @@ import Form from './Form';
 import React, {useState, useEffect} from 'react';
 
 
-
 function MyApp() {
   const [characters, setCharacters] = useState([
 
   ]);
   
   function removeOneCharacter (index) {
+    deleteUser(characters[index].id);
     const updated = characters.filter((character, i) => {
         return i !== index
     });
@@ -49,12 +49,22 @@ function MyApp() {
   );
   function updateList(person) { 
     postUser(person)
-      .then(() => setCharacters([...characters, person]))
-      .catch((error) => {
-        console.log(error);
-      })
-}
-}
+    .then((response) => { if (response.status === 201) {
+      return response.json()
+    }
+  })
+    .then((json) => { setCharacters([...characters, json]);
+    })
+    .catch((error) => {
+      console.log(error);
+    })
 
+}
+function deleteUser(id) {
+  const url = `Http://localhost:8000/users/${id}`;
+  const promise = fetch(url, { method: "DELETE" });
+  return promise;
+}
+}
 
 export default MyApp;
